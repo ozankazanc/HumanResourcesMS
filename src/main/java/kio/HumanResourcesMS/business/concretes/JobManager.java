@@ -13,15 +13,35 @@ import kio.HumanResourcesMS.entities.concretes.Job;
 public class JobManager implements JobService {
 
 	private JobDao jobDao;
+
 	@Autowired
 	public JobManager(JobDao jobDao) {
 		super();
-		this.jobDao=jobDao;
+		this.jobDao = jobDao;
 	}
 
 	@Override
 	public List<Job> getAll() {
 		return this.jobDao.findAll();
+	}
+
+	@Override
+	public Job getById(int id) {
+		return this.jobDao.getOne(id);
+
+	}
+
+	@Override
+	public void add(Job job) {
+
+		List<Job> jobs = getAll();
+
+		for (Job jobSrc : jobs) {
+			if (job.getJobPosition() == jobSrc.getJobPosition()) {
+				// if same job position, enter blocks
+			}
+			this.jobDao.save(job);
+		}
 	}
 
 }
