@@ -13,7 +13,7 @@ import lombok.Data;
 public class User {
 
 	@Id
-	@Column(name = "userId")
+	@Column(name = "user_id")
 	private int userId;
 	@Column(name = "mail")
 	private String mail;

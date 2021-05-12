@@ -13,10 +13,10 @@ import lombok.Data;
 public class Job {
 
 	@Id
-	@Column(name = "jobId")
+	@Column(name = "job_id")
 	private int jobId;
-	@Column(name = "jobId")
+	@Column(name = "job_position")
 	private String jobPosition;
-	@Column(name = "jobId")
+	@Column(name = "job_description")
 	private String jobDescription;
 }

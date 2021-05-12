@@ -16,17 +16,17 @@ import lombok.Data;
 public class Jobseeker {
 
 	@Id
-	@Column(name = "jobseekerId")
+	@Column(name = "jobseeker_id")
 	private int jobseekerId;
-	@OneToOne
-	@Column(name = "userId")
+	//@OneToOne
+	@Column(name = "user_id")
 	private int userId;
-	@Column(name = "nationalityNumber")
+	@Column(name = "nationality_number")
 	private String nationalityNumber;
 	@Column(name = "birthday")
 	private Date birthday;
-	@Column(name = "firstName")
+	@Column(name = "first_name")
 	private String firstName;
-	@Column(name = "lastName")
+	@Column(name = "last_name")
 	private String lastName;
 }

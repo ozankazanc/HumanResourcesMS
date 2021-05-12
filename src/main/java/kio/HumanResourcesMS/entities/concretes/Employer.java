@@ -14,12 +14,12 @@ import lombok.Data;
 public class Employer {
 
 	@Id
-	@Column(name = "employerId")
+	@Column(name = "employer_id")
 	private int employerId;
-	@OneToOne
-	@Column(name = "userId")
+	//@OneToOne
+	@Column(name = "user_id")
 	private int userId;
-	@Column(name = "companyName")
+	@Column(name = "company_name")
 	private String companyName;
 	@Column(name = "website")
 	private String website;

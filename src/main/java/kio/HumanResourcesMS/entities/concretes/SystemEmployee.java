@@ -10,23 +10,23 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "systemEmployee")
+@Table(name = "system_employees")
 public class SystemEmployee {
 
 	@Id
-	@Column(name = "systemEmployeeId")
+	@Column(name = "system_employee_id")
 	private int systemEmployeeId;
-	@OneToOne
-	@Column(name = "userId")
+	//@OneToOne
+	@Column(name = "user_id")
 	private int userId;
-	@OneToOne
-	@Column(name = "jobId")
+	//@OneToOne
+	@Column(name = "job_id")
 	private int jobId;
-	@Column(name = "firstName")
+	@Column(name = "first_name")
 	private String firstName;
-	@Column(name = "lastName")
+	@Column(name = "last_name")
 	private String lastName;
-	@Column(name = "Role")
-	private int Role;
+	@Column(name = "role")
+	private int role;
 
 }
