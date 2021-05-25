@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kio.HumanResourcesMS.business.abstracts.JobService;
+import kio.HumanResourcesMS.core.utilities.results.*;
 import kio.HumanResourcesMS.dataAccess.abstracts.JobDao;
 import kio.HumanResourcesMS.entities.concretes.Job;
 
@@ -21,27 +22,57 @@ public class JobManager implements JobService {
 	}
 
 	@Override
-	public List<Job> getAll() {
-		return this.jobDao.findAll();
-	}
+	public DataResult<List<Job>> getAll() {
 
-	@Override
-	public Job getById(int id) {
-		return this.jobDao.getOne(id);
-
-	}
-
-	@Override
-	public void add(Job job) {
-
-		Job jobPosition = this.jobDao.findbyJobPosition(job.getJobPosition());
-		if(jobPosition==null)
+		try 
 		{
-			this.jobDao.save(job);
+			return new SuccessDataResult<List<Job>>(this.jobDao.findAll(), "Listelendi.");
 		}
-		else
+		catch (Exception ex) 
 		{
-			
+			return new ErrorDataResult<List<Job>>("Listelenemedi. Nedeni: " + ex.getMessage());
+		}
+	}
+
+	@Override
+	public DataResult<Job> getById(int id) {
+		
+		try 
+		{
+			return new SuccessDataResult<Job>(this.jobDao.getOne(id), "Getirildi.");
+		}
+		catch (Exception ex) 
+		{
+			return new ErrorDataResult<Job>("Getirilemedi. Nedeni: " + ex.getMessage());
+		}
+	}
+
+	@Override
+	public Result add(Job job) {
+
+		try {
+			if (this.getByJobPosition(job.getJobPosition()).getSuccess() == true) {
+
+				this.jobDao.save(job);
+				return new SuccessResult("İş pozisyonu eklenmiştir.");
+			} else {
+
+				return new ErrorResult("Eklemek istediğiniz iş pozisyonu zaten bulunmaktadır.");
+			}
+		} catch (Exception ex) {
+
+			return new ErrorResult("Sistemsel hata. Nedeni: " + ex.getMessage());
+		}
+
+	}
+
+	@Override
+	public Result getByJobPosition(String jobPosition) {
+
+		if (this.jobDao.findbyJobPosition(jobPosition) == null) {
+			return new SuccessResult();
+		} else {
+			return new ErrorResult();
 		}
 	}
 }
