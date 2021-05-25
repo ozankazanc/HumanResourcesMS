@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import kio.HumanResourcesMS.business.abstracts.JobService;
+import kio.HumanResourcesMS.core.utilities.results.*;
 import kio.HumanResourcesMS.entities.concretes.Job;
 
 @RestController
@@ -26,12 +27,12 @@ public class JobsController {
 	}
 	
 	@GetMapping("/getall")
-	public List<Job> getAll() {
+	public DataResult<List<Job>> getAll() {
 		return this.jobService.getAll();
 	}
 	@PostMapping("/add")
-	public void add(@RequestBody Job job) {
-		 this.jobService.add(job);
+	public Result add(@RequestBody Job job) {
+		 return this.jobService.add(job);
 	}
 	
 }

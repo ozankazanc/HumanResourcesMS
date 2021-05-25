@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kio.HumanResourcesMS.business.abstracts.JobPositionCheckService;
 import kio.HumanResourcesMS.business.abstracts.JobService;
 import kio.HumanResourcesMS.core.utilities.results.*;
 import kio.HumanResourcesMS.dataAccess.abstracts.JobDao;
@@ -14,35 +15,31 @@ import kio.HumanResourcesMS.entities.concretes.Job;
 public class JobManager implements JobService {
 
 	private JobDao jobDao;
+	private JobPositionCheckService jobPositionCheckService;
 
 	@Autowired
-	public JobManager(JobDao jobDao) {
+	public JobManager(JobDao jobDao, JobPositionCheckService jobPositionCheckService) {
 		super();
 		this.jobDao = jobDao;
+		this.jobPositionCheckService = jobPositionCheckService;
 	}
 
 	@Override
 	public DataResult<List<Job>> getAll() {
 
-		try 
-		{
+		try {
 			return new SuccessDataResult<List<Job>>(this.jobDao.findAll(), "Listelendi.");
-		}
-		catch (Exception ex) 
-		{
+		} catch (Exception ex) {
 			return new ErrorDataResult<List<Job>>("Listelenemedi. Nedeni: " + ex.getMessage());
 		}
 	}
 
 	@Override
 	public DataResult<Job> getById(int id) {
-		
-		try 
-		{
+
+		try {
 			return new SuccessDataResult<Job>(this.jobDao.getOne(id), "Getirildi.");
-		}
-		catch (Exception ex) 
-		{
+		} catch (Exception ex) {
 			return new ErrorDataResult<Job>("Getirilemedi. Nedeni: " + ex.getMessage());
 		}
 	}
@@ -51,7 +48,7 @@ public class JobManager implements JobService {
 	public Result add(Job job) {
 
 		try {
-			if (this.getByJobPosition(job.getJobPosition()).getSuccess() == true) {
+			if (jobPositionCheckService.getByJobPosition(job.getJobPosition()).getSuccess() == true) {
 
 				this.jobDao.save(job);
 				return new SuccessResult("İş pozisyonu eklenmiştir.");
@@ -66,13 +63,4 @@ public class JobManager implements JobService {
 
 	}
 
-	@Override
-	public Result getByJobPosition(String jobPosition) {
-
-		if (this.jobDao.findbyJobPosition(jobPosition) == null) {
-			return new SuccessResult();
-		} else {
-			return new ErrorResult();
-		}
-	}
 }
