@@ -34,14 +34,14 @@ public class JobManager implements JobService {
 	@Override
 	public void add(Job job) {
 
-		List<Job> jobs = getAll();
-
-		for (Job jobSrc : jobs) {
-			if (job.getJobPosition() == jobSrc.getJobPosition()) {
-				// if same job position, enter blocks
-			}
+		Job jobPosition = this.jobDao.findbyJobPosition(job.getJobPosition());
+		if(jobPosition==null)
+		{
 			this.jobDao.save(job);
 		}
+		else
+		{
+			
+		}
 	}
-
 }

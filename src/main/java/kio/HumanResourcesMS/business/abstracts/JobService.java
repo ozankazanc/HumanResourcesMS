@@ -10,5 +10,4 @@ public interface JobService {
 	List<Job> getAll();
 	Job getById(int id);
 	void add(Job job);
-	
 }
