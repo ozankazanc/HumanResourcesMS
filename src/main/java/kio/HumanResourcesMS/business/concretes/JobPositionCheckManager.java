@@ -21,7 +21,7 @@ public class JobPositionCheckManager implements JobPositionCheckService {
 	@Override
 	public Result getByJobPosition(String jobPosition) {
 
-		if (this.jobDao.findbyJobPosition(jobPosition) == null) {
+		if (this.jobDao.findByJobPosition(jobPosition) == null) {
 			return new SuccessResult();
 		} else {
 			return new ErrorResult();

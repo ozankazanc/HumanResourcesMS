@@ -35,16 +35,17 @@ public class EmployerCheckManager implements EmployerCheckService {
 	@Override
 	public DataResult<Employer> checkDomainOfMail(Employer employer) {
 
-		try {
-			if (this.checkDomainOfMail(employer).getData().getMail() == "") {
-				return new SuccessDataResult<Employer>("Uygun mail");
-			} else {
-				return new ErrorDataResult<Employer>("Bu mail sistemde bulunmakta.");
-
-			}
-		} catch (Exception ex) {
-			return new ErrorDataResult<Employer>("Sistemsel hata. Nedeni: " + ex.getMessage());
-		}
+		return null;
+//		try {
+//			if (this.checkDomainOfMail(employer).getData().getMail() == "") {
+//				return new SuccessDataResult<Employer>("Uygun mail");
+//			} else {
+//				return new ErrorDataResult<Employer>("Bu mail sistemde bulunmakta.");
+//
+//			}
+//		} catch (Exception ex) {
+//			return new ErrorDataResult<Employer>("Sistemsel hata. Nedeni: " + ex.getMessage());
+//		}
 	}
 
 }

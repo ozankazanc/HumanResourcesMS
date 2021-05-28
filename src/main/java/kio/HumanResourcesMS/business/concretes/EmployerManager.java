@@ -39,10 +39,10 @@ public class EmployerManager implements EmployerService {
 
 	@Override
 	public Result add(Employer employer) {
-		if(!employerCheckService.checkDuplicateMail(employer.getMail()).getSuccess())
-		{
-			return null;
-		}
+//		if(!employerCheckService.checkDuplicateMail(employer.getMail()).getSuccess())
+//		{
+//			return null;
+//		}
 		return null;
 	}
 

@@ -33,17 +33,7 @@ public class JobManager implements JobService {
 			return new ErrorDataResult<List<Job>>("Listelenemedi. Nedeni: " + ex.getMessage());
 		}
 	}
-
-	@Override
-	public DataResult<Job> getById(int id) {
-
-		try {
-			return new SuccessDataResult<Job>(this.jobDao.getOne(id), "Getirildi.");
-		} catch (Exception ex) {
-			return new ErrorDataResult<Job>("Getirilemedi. Nedeni: " + ex.getMessage());
-		}
-	}
-
+	
 	@Override
 	public Result add(Job job) {
 

@@ -9,7 +9,5 @@ public interface JobService {
 
 	DataResult<List<Job>> getAll();
 
-	DataResult<Job> getById(int id);
-
 	Result add(Job job);
 }

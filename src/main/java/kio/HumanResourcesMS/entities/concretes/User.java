@@ -1,10 +1,8 @@
 package kio.HumanResourcesMS.entities.concretes;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.persistence.Inheritance;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -16,16 +14,16 @@ import lombok.NoArgsConstructor;
 @Table(name = "users")
 @AllArgsConstructor
 @NoArgsConstructor
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
 	@Column(name = "user_id")
 	private int userId;
 	@Column(name = "mail")
 	private String mail;
 	@Column(name = "password")
 	private String password;
-	@Column(name = "confirmed")
-	private boolean confirmed;
+
 }
