@@ -9,8 +9,10 @@ public interface JobAdvertisementService {
 	DataResult<List<JobAdvertisement>> getAll();
 
 	DataResult<List<JobAdvertisement>> getAllSortedByActive();
+	
+	DataResult<List<JobAdvertisement>> getByActiveOneCompany(String companyName);
 
-	DataResult<List<JobAdvertisement>> getAllSortedByDate();
+//	DataResult<List<JobAdvertisement>> getAllSortedByDate();
 
 	Result add(JobAdvertisement advertisement);
 

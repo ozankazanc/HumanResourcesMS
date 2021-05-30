@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,9 +33,11 @@ public class JobAdvertisement {
 	@Column(name = "open_positions")
 	private int openPositions;
 	
+	@JsonFormat(pattern="yyyy-MM-dd")
 	@Column(name = "start_date")
 	private LocalDate startDate;
 
+	@JsonFormat(pattern="yyyy-MM-dd")
 	@Column(name = "end_date")
 	private LocalDate endDate;
 
