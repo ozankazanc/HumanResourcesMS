@@ -13,24 +13,24 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Table(name = "verification_codes")
+@Table(name="verification_employees")
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class VerificationCode {
+public class VerificationEmployee {
 
 	@Id
-	@GeneratedValue
-	@Column(name = "id")
+    @GeneratedValue
+    @Column(name="id")
 	private int id;
-
-	@Column(name = "User_id")
-	private int userId;
-
-	@Column(name = "verification_code")
-	private String code;
-
-	@Column(name = "confirm_date", columnDefinition = "Date default CURRENT_DATE")
-	private LocalDate confirmDate = LocalDate.now();
-
+	
+	 @Column(name="employer_id")
+	private int employerId;
+	
+	 @Column(name="employee_id")
+	private int employeeId;
+	
+	
+	 @Column(name="confirm_date",columnDefinition = "Date default CURRENT_DATE")
+		private LocalDate confirmDate=LocalDate.now();
 }

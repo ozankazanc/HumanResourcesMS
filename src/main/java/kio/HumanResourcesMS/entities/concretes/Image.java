@@ -8,34 +8,34 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-
 import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name = "contact_informations")
+@Table(name = "images")
 @AllArgsConstructor
 @NoArgsConstructor
-public class ContactInformation {
-	
+public class Image {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
-	
-	@Column(name = "github_address")
-	private String githubAdress;
-	
-	@Column(name = "linkedin_address")
-	private String linkedinAddress;
-	
-	@ManyToOne	
+
+	@NotBlank
+	@NotNull
+	@Column(name = "image_url")
+	private String imageUrl;
+
+	@ManyToOne
 	@JsonIgnore
-	@JoinColumn(name="cvid")
+	@JoinColumn(name = "cvid")
 	private CurriculumVitae curriculumVitae;
 }

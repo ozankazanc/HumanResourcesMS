@@ -1,5 +1,6 @@
 package kio.HumanResourcesMS.entities.concretes;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,29 +14,25 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-
 import lombok.NoArgsConstructor;
+
 
 @Data
 @Entity
-@Table(name = "contact_informations")
+@Table(name = "languages")
 @AllArgsConstructor
 @NoArgsConstructor
-public class ContactInformation {
-	
+public class Language {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
 	
-	@Column(name = "github_address")
-	private String githubAdress;
-	
-	@Column(name = "linkedin_address")
-	private String linkedinAddress;
+	@Column(name = "languge")
+	private String language;
 	
 	@ManyToOne	
 	@JsonIgnore
-	@JoinColumn(name="cvid")
-	private CurriculumVitae curriculumVitae;
+	@JoinColumn(name="id")
+	private LanguageInformation languageInformation;
 }
