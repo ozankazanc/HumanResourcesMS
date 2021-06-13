@@ -32,39 +32,44 @@ public class CurriculumVitae{
     @Column(name = "id")
 	private int id;
 	
+	@JsonIgnore
 	@Column(name="created_date",columnDefinition = "Date default CURRENT_DATE")
 	private LocalDate createdDate=LocalDate.now();
 	
+//
+//	@Column(name="active")
+//	private boolean active;
+//	
 	@ManyToOne
 	@JoinColumn(name="jobseeker_id")
 	private Jobseeker jobseeker;
 	
-	@OneToOne(mappedBy="CurriculumVitae", fetch=FetchType.LAZY)
+	@OneToOne(mappedBy="curriculumVitae", fetch=FetchType.LAZY)
 	@JsonIgnore
 	private Image image;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy="CurriculumVitae")
+	@OneToMany(mappedBy="curriculumVitae")
 	private List<JobExperience> jobExperience;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy="CurriculumVitae")
+	@OneToMany(mappedBy="curriculumVitae")
 	private List<Ability> ability;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy="CurriculumVitae")
+	@OneToMany(mappedBy="curriculumVitae")
 	private List<EducationInformation> educationInformation;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy="CurriculumVitae")
+	@OneToMany(mappedBy="curriculumVitae")
 	private List<LanguageInformation> languageInformation;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy="CurriculumVitae")
+	@OneToMany(mappedBy="curriculumVitae")
 	private List<ContactInformation> contactInformation;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy="CurriculumVitae")
+	@OneToMany(mappedBy="curriculumVitae")
 	private List<CoverLetter> coverLetter;
 	
 	
