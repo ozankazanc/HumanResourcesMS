@@ -7,17 +7,12 @@ import org.springframework.data.jpa.repository.Query;
 
 import kio.HumanResourcesMS.entities.concretes.JobAdvertisement;
 
-
-public interface JobAdvertisementDao extends JpaRepository<JobAdvertisement,Integer> {
+public interface JobAdvertisementDao extends JpaRepository<JobAdvertisement, Integer> {
 
 	@Query("From JobAdvertisement where active=true")
-	List<JobAdvertisement> getByIsActive();
-	
-	
-	
+	List<JobAdvertisement> getByIsActiveTrue();
+
 	@Query(value = "From JobAdvertisement where employer_companyName = :companyName and active = true", nativeQuery = true)
 	List<JobAdvertisement> getByActiveOneCompany(String companyName);
-	
-	
-	
+
 }

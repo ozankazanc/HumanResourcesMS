@@ -8,5 +8,5 @@ import kio.HumanResourcesMS.entities.concretes.*;
 
 public interface JobExperienceDao extends JpaRepository<JobExperience,Integer> {
 
-	List<Ability> getByCurriculumVitae_Id(int cvid);
+	List<JobExperience> getByCurriculumVitae_Id(int cvid);
 }

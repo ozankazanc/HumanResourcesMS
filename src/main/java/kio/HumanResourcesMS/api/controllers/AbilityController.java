@@ -15,7 +15,7 @@ import kio.HumanResourcesMS.core.utilities.results.Result;
 import kio.HumanResourcesMS.entities.concretes.Ability;
 
 @RestController
-@RequestMapping("/api/abilityController")
+@RequestMapping("/api/ability")
 public class AbilityController {
 
 	private AbilityService abilityService;
@@ -30,6 +30,10 @@ public class AbilityController {
 	@GetMapping("/getall")
 	public DataResult<List<Ability>> getAll() {
 		return this.abilityService.getAll();
+	}
+	@GetMapping("/getbycv")
+	public DataResult<List<Ability>> getbygetByCurriculumVitae(int cvid) {
+		return this.abilityService.getByCurriculumVitae(cvid);
 	}
 	@PostMapping("/add")
 	public Result add(@RequestBody Ability ability) {
