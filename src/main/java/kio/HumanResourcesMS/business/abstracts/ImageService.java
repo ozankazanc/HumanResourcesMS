@@ -9,7 +9,7 @@ public interface ImageService {
 	
 	Result upload(int id, MultipartFile file);
 
-	DataResult<Image> getByJobSeeker(int jobHunterId);
+	DataResult<List<Image>> getByCurriculumVitae(int cvid);
 
 	DataResult<List<Image>> getAll();
 }

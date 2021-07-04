@@ -2,15 +2,19 @@ package kio.HumanResourcesMS.business.concretes;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import kio.HumanResourcesMS.business.abstracts.LanguageInformationService;
 import kio.HumanResourcesMS.core.utilities.results.*;
 import kio.HumanResourcesMS.dataAccess.abstracts.LanguageInformationDao;
 import kio.HumanResourcesMS.entities.concretes.LanguageInformation;
 
+@Service
 public class LanguageInformationManager implements LanguageInformationService {
 
 	private LanguageInformationDao languageInformationDao;
-
+	@Autowired
 	public LanguageInformationManager(LanguageInformationDao languageInformationDao) {
 		super();
 		this.languageInformationDao = languageInformationDao;

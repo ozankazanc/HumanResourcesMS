@@ -42,7 +42,7 @@ public class JobAdvertisement {
 	private LocalDate endDate;
 
 	@Column(name = "active")
-	private boolean active;
+	private boolean active = true;
 	
 	@Column(name = "salary")
 	private int salary;

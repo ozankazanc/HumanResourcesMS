@@ -1,5 +1,9 @@
 package kio.HumanResourcesMS.business.abstracts;
 
-public interface SystemEmployeeService {
+import kio.HumanResourcesMS.entities.concretes.*;
+import java.util.List;
+import kio.HumanResourcesMS.core.utilities.results.*;
 
+public interface SystemEmployeeService {
+	DataResult<List<SystemEmployee>> getAll();
 }
